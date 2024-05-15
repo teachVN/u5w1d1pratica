@@ -1,17 +1,18 @@
 package it.epicode.u5w1d1pratica.appConfig;
 
-import it.epicode.u5w1d1pratica.bean.Bevanda;
-import it.epicode.u5w1d1pratica.bean.Ingrediente;
-import it.epicode.u5w1d1pratica.bean.Menu;
-import it.epicode.u5w1d1pratica.bean.Pizza;
+import it.epicode.u5w1d1pratica.bean.*;
+import it.epicode.u5w1d1pratica.enumeration.Stato;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 @Configuration
+@PropertySource("application.properties")
 public class AppConfig {
     @Bean
     public Bevanda birra(){
@@ -103,7 +104,7 @@ public class AppConfig {
         diavola.getIngredienti().add(salame());
         return diavola;
     }
-    @Bean
+    //@Bean
     public Menu menu(){
         Menu menu = new Menu();
 
@@ -126,5 +127,35 @@ public class AppConfig {
         menu.setPizze(pizze);
 
         return menu;
+    }
+    @Bean("tavolo1")
+    public Tavolo tavolo1(@Value("${tavolo1.coperto}") Double coperto){
+        Tavolo tavolo = new Tavolo();
+        tavolo.setNumero(1);
+        tavolo.setMaxCoperti(5);
+        tavolo.setStato(Stato.LIBERO);
+        //System.out.println(coperto);
+        tavolo.setCoperto(coperto);
+        return tavolo;
+    }
+
+    @Bean("tavolo2")
+    public Tavolo tavolo2(@Value("${tavolo2.coperto}") Double coperto){
+        Tavolo tavolo = new Tavolo();
+        tavolo.setNumero(2);
+        tavolo.setMaxCoperti(7);
+        //tavolo.setStato(Stato.LIBERO);
+        tavolo.setCoperto(coperto);
+        return tavolo;
+    }
+
+    @Bean("tavolo3")
+    public Tavolo tavolo3(@Value("${tavolo3.coperto}") Double coperto){
+        Tavolo tavolo = new Tavolo();
+        tavolo.setNumero(3);
+        tavolo.setMaxCoperti(4);
+        tavolo.setStato(Stato.LIBERO);
+        tavolo.setCoperto(coperto);
+        return tavolo;
     }
 }

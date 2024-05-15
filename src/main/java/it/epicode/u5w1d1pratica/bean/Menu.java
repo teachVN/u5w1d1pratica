@@ -1,13 +1,21 @@
 package it.epicode.u5w1d1pratica.bean;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Data
+@Component
 public class Menu {
+    @Autowired
     private List<Ingrediente> ingredienti;
+
+    @Autowired
     private List<Bevanda> bevande;
+
+    @Autowired
     private List<Pizza> pizze;
 
     public void stampaMenu(){

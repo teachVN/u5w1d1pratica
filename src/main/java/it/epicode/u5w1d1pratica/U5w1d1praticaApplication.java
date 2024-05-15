@@ -14,11 +14,11 @@ public class U5w1d1praticaApplication {
 
 		SpringApplication.run(U5w1d1praticaApplication.class, args);
 
-		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-
-		Menu menu = ctx.getBean(Menu.class);
-
-		menu.stampaMenu();
+//		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+//
+//		Menu menu = ctx.getBean(Menu.class);
+//
+//		menu.stampaMenu();
 	}
 
 }
